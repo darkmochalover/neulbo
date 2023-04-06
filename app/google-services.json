@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "741189192909",
+    "project_id": "email-authentication-fir-d49ef",
+    "storage_bucket": "email-authentication-fir-d49ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741189192909:android:f1d27111998883edc2ed84",
+        "android_client_info": {
+          "package_name": "com.example.emailauthenticationfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741189192909-mf3opit3b4rttn03g74sum2h92bc4r9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBse6lNUtY2B99Enl87EqtDFubjL9UZRrw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741189192909-mf3opit3b4rttn03g74sum2h92bc4r9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
