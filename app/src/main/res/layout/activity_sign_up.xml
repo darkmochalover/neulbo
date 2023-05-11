@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/signup_screen"
+    android:background="@drawable/neulbo_login"
     android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -83,7 +83,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="80dp"
         android:text="Sign Up"
-        android:background="#ffc801"
+        android:background="#c0d0e6"
         />
 
 

@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.emailauthenticationfirebase'
+    namespace 'com.mp3.neulbo'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.emailauthenticationfirebase"
+        applicationId "com.mp3.neulbo"
         minSdk 24
         targetSdk 33
         versionCode 1

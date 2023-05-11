@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/signin_screen"
+    android:background="@drawable/neulbo_login"
     android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/LoginTextInputInnerFieldStyle"
-            android:hint="Enter Your Email"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             />
 
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/LoginTextInputInnerFieldStyle"
-            android:hint="Enter Your Password"
+            android:hint="Password"
             android:inputType="textPassword"
             />
 
@@ -59,7 +59,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="80dp"
         android:text="Sign In"
-        android:background="#ffc801"
+        android:background="#c0d0e6"
         />
 
     <LinearLayout
@@ -87,7 +87,7 @@
             android:text="Sign Up!"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="7dp"
-            android:textColor="#ffc801"
+            android:textColor="#798f8c"
             android:textSize="16sp"
 
             />
