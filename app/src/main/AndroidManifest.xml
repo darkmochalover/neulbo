@@ -15,6 +15,15 @@
             android:name="com.mp3.neulbo.SignUp"
             android:exported="false" />
         <activity
+            android:name="com.mp3.neulbo.calendar"
+            android:exported="false" />
+        <activity
+            android:name="com.mp3.neulbo.DiaryActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.mp3.neulbo.MainScreen"
+            android:exported="false" />
+        <activity
             android:name="com.mp3.neulbo.SignIn"
             android:exported="true">
             <intent-filter>
