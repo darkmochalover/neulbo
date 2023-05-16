@@ -3,13 +3,15 @@ package com.mp3.neulbo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.ImageButton
 
 class DiaryActivity : AppCompatActivity() {
 
 
     private lateinit var goback: ImageButton
-
+    private lateinit var save:ImageButton
+    private lateinit var edit:EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +20,12 @@ class DiaryActivity : AppCompatActivity() {
 
 
         goback=findViewById(R.id.goBack)
+        save=findViewById(R.id.save)
+        edit=findViewById(R.id.diaryEditText)
+
+
+        //일기내용
+        val input = edit.getText().toString()
 
 
         //뒤로가기 버튼
@@ -26,7 +34,13 @@ class DiaryActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
+        //저장버튼
+        save.setOnClickListener{
+            val intent = Intent(this, MainScreen::class.java)
+            intent.putExtra("diaryText",input)
+            startActivity(intent)
+            finish()
+        }
 
 
 
