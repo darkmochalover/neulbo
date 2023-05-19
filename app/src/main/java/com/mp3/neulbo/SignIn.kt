@@ -1,23 +1,18 @@
 package com.mp3.neulbo
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.mp3.neulbo.databinding.ActivitySignInBinding
-
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-
-import com.google.firebase.auth.GoogleAuthProvider
-
-import com.google.android.gms.common.SignInButton
-
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
-
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
+import com.mp3.neulbo.databinding.ActivitySignInBinding
 
 
 class SignIn : AppCompatActivity() {
@@ -69,6 +64,7 @@ class SignIn : AppCompatActivity() {
         // 구글로 로그인
         binding.googleLoginButton.setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
+
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
 
@@ -79,10 +75,6 @@ class SignIn : AppCompatActivity() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-
-
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -116,6 +108,11 @@ class SignIn : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             Toast.makeText(this, "Logged in as ${user.email}", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(applicationContext, MainScreen::class.java)
+            intent.putExtra("UserName", user.email)
+//            intent.putExtra("PhotoUrl", user.getPhotoUrl())
+            startActivity(intent)
         } else {
             Toast.makeText(this, "Not logged in", Toast.LENGTH_SHORT).show()
         }
