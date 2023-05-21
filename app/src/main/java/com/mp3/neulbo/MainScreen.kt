@@ -16,8 +16,10 @@ class MainScreen : AppCompatActivity() {
 
     private lateinit var add_button: ImageButton
     private lateinit var calendar_button: ImageButton
+    private lateinit var message: ImageButton
     private lateinit var paper_plane: ImageView
     private lateinit var plane: Animation
+    private lateinit var plane_2: Animation
 
 
 
@@ -28,7 +30,15 @@ class MainScreen : AppCompatActivity() {
         add_button = findViewById(R.id.add)
         calendar_button=findViewById(R.id.calendar)
         paper_plane=findViewById(R.id.paper_plane)
+        message=findViewById(R.id.message)
         plane=AnimationUtils.loadAnimation(this,R.anim.save_diary)
+        plane_2=AnimationUtils.loadAnimation(this,R.anim.receive)
+
+
+        if(intent.hasExtra("login")) {
+            message.startAnimation(plane_2)
+        }
+
         paper_plane.visibility= View.INVISIBLE
         if(intent.hasExtra("diaryText")){
             paper_plane.visibility= View.VISIBLE
@@ -43,12 +53,17 @@ class MainScreen : AppCompatActivity() {
             finish()
 
         }
+        //캘린더 버튼
         calendar_button.setOnClickListener{
             val intent = Intent(this, calendar::class.java)
             startActivity(intent)
             finish()
         }
-
+        //비행기 버튼
+        message.setOnClickListener{
+            message.setAlpha(0)
+            message.setClickable(false)
+        }
 
 
     }

@@ -49,7 +49,9 @@ class SignIn : AppCompatActivity() {
                     if(it.isSuccessful)
                     {
                         val intent=Intent(this, MainScreen::class.java)
+                        intent.putExtra("login","successful")
                         startActivity(intent)
+                        finish()
                     }
                     else{
                         Toast.makeText(this,"You have not Registered Yet..Please Sign UP", Toast.LENGTH_SHORT).show()
