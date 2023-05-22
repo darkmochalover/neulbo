@@ -2,6 +2,7 @@ package com.mp3.neulbo
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -22,6 +23,7 @@ class SignIn : AppCompatActivity() {
 
     private lateinit var googleLoginButton: SignInButton
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var skip:Button
 
     companion object {
         private const val RC_SIGN_IN = 9001
@@ -38,6 +40,14 @@ class SignIn : AppCompatActivity() {
             startActivity(intent)
         }
 
+        skip=findViewById(R.id.skip)
+        //skip
+        skip.setOnClickListener{
+            val intent=Intent(this, MainScreen::class.java)
+            intent.putExtra("login","successful")
+            startActivity(intent)
+            finish()
+        }
         // 이메일로 로그인
         binding.signInButton.setOnClickListener {
             val emailEt=binding.emailEt.text.toString()
