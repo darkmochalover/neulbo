@@ -9,6 +9,7 @@ import android.view.animation.Animation
 import android.widget.ImageButton
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import androidx.core.view.isVisible
 import kotlinx.coroutines.delay
 
 class MainScreen : AppCompatActivity() {
@@ -50,6 +51,7 @@ class MainScreen : AppCompatActivity() {
         add_button.setOnClickListener {
             val intent = Intent(this, DiaryActivity::class.java)
             startActivity(intent)
+            intent.putExtra("buttonVisible", message.isVisible)
             finish()
 
         }
@@ -57,11 +59,12 @@ class MainScreen : AppCompatActivity() {
         calendar_button.setOnClickListener{
             val intent = Intent(this, calendar::class.java)
             startActivity(intent)
+            intent.putExtra("buttonVisible", message.isVisible)
             finish()
         }
         //비행기 버튼
         message.setOnClickListener{
-            message.setAlpha(0)
+            message.isVisible=false
             message.setClickable(false)
         }
 

@@ -24,21 +24,23 @@ class DiaryActivity : AppCompatActivity() {
         edit=findViewById(R.id.diaryEditText)
 
 
+
+
         //일기내용
         val input = edit.getText().toString()
 
 
         //뒤로가기 버튼
         goback.setOnClickListener {
-            val intent = Intent(this, MainScreen::class.java)
-            startActivity(intent)
+            val intentSend = Intent(this, MainScreen::class.java)
+            startActivity(intentSend)
             finish()
         }
         //저장버튼
         save.setOnClickListener{
-            val intent = Intent(this, MainScreen::class.java)
-            intent.putExtra("diaryText",input)
-            startActivity(intent)
+            val intentSend = Intent(this, MainScreen::class.java)
+            intentSend.putExtra("diaryText",input)
+            startActivity(intentSend)
             finish()
         }
 
