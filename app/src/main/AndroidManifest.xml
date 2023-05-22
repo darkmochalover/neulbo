@@ -12,19 +12,27 @@
         android:theme="@style/Theme.EmailAuthenticationFirebase"
         tools:targetApi="31">
         <activity
-            android:name="com.mp3.neulbo.SignUp"
+            android:name=".EmotionDetect"
             android:exported="false" />
         <activity
-            android:name="com.mp3.neulbo.calendar"
+            android:name=".UserProfile"
+            android:exported="false"
+            android:label="@string/title_activity_user_profile"
+            android:theme="@style/Theme.EmailAuthenticationFirebase.NoActionBar" />
+        <activity
+            android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name="com.mp3.neulbo.DiaryActivity"
+            android:name=".calendar"
             android:exported="false" />
         <activity
-            android:name="com.mp3.neulbo.MainScreen"
+            android:name=".DiaryActivity"
             android:exported="false" />
         <activity
-            android:name="com.mp3.neulbo.SignIn"
+            android:name=".MainScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SignIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,8 +41,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.mp3.neulbo.MainActivity"
-            android:exported="true"/>
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
