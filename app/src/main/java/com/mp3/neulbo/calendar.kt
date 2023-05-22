@@ -28,5 +28,11 @@ class calendar : AppCompatActivity() {
             intent.putExtra("selectedDate", selectedDate)
             startActivity(intent)
         }
+        //뒤로가기 버튼
+        goback.setOnClickListener {
+            val intent = Intent(this, MainScreen::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
