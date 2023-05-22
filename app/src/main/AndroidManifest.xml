@@ -11,14 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EmailAuthenticationFirebase"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".EmotionDetect"-->
-<!--            android:exported="false" />-->
-        <activity
-            android:name=".UserProfile"
-            android:exported="false"
-            android:label="@string/title_activity_user_profile"
-            android:theme="@style/Theme.EmailAuthenticationFirebase.NoActionBar" />
+
         <activity
             android:name=".SignUp"
             android:exported="false" />
