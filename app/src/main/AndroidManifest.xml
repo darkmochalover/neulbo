@@ -19,6 +19,12 @@
             android:name=".shop.BookActivity"
             android:exported="false" />
         <activity
+            android:name=".StampBoxActivity"
+            android:exported="false" />
+        <activity
+            android:name=".stampBox.AddStampActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity

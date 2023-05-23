@@ -82,11 +82,11 @@ class MainScreen : AppCompatActivity() {
             finish()
         }
         //우표 박스
-//        button_stampBox.setOnClickListener {
-//            val intent = Intent(this, stampBoxActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
+        button_stampBox.setOnClickListener {
+            val intent = Intent(this, StampBoxActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
 
     }
