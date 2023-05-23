@@ -1,0 +1,220 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0bdd7"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/goBack"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:src="@drawable/goback_edit" />
+
+    
+    <ImageButton
+        android:id="@+id/stampsImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/goBack"
+        android:src="@drawable/ac_stamps"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/stampsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/stampsImage"
+        android:text="stamps"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+    <ImageButton
+        android:id="@+id/wallpaperImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/stampsText"
+        android:src="@drawable/ac_wallpaper"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/wallpaperText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/wallpaperImage"
+        android:text="wallpaper"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+    <ImageButton
+        android:id="@+id/envelopesImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/wallpaperText"
+        android:src="@drawable/ac_envelopes"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/envelopesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/envelopesImage"
+        android:text="envelopes"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+    <ImageButton
+        android:id="@+id/stationeryImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/envelopesText"
+        android:src="@drawable/ac_stationery"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/stationeryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/stationeryImage"
+        android:text="stationery"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+
+    <ImageButton
+        android:id="@+id/bookImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/goBack"
+        android:layout_toRightOf="@id/stampsImage"
+        android:src="@drawable/ac_book"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/bookText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/bookImage"
+        android:layout_alignLeft="@id/bookImage"
+        android:text="book"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+    <ImageButton
+        android:id="@+id/fontImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/bookText"
+        android:layout_toRightOf="@id/stampsImage"
+        android:src="@drawable/ac_font"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/fontText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/fontImage"
+        android:layout_alignLeft="@id/fontImage"
+        android:text="font"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+    <ImageButton
+        android:id="@+id/emotionImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/fontText"
+        android:layout_toRightOf="@id/stampsImage"
+        android:src="@drawable/ac_emotion"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/emotionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/emotionImage"
+        android:layout_alignLeft="@id/emotionImage"
+        android:text="emotion"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+    <ImageButton
+        android:id="@+id/origamiImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/emotionText"
+        android:layout_toRightOf="@id/stampsImage"
+        android:src="@drawable/ac_origami"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/origamiText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/origamiImage"
+        android:layout_alignLeft="@id/origamiImage"
+        android:text="origami"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

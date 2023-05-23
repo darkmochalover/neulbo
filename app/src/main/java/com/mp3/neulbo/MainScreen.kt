@@ -22,6 +22,9 @@ class MainScreen : AppCompatActivity() {
     private lateinit var plane: Animation
     private lateinit var plane_2: Animation
 
+//    top title
+    private lateinit var button_shop: ImageButton
+    private lateinit var button_stampBox: ImageButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +37,10 @@ class MainScreen : AppCompatActivity() {
         message=findViewById(R.id.message)
         plane=AnimationUtils.loadAnimation(this,R.anim.save_diary)
         plane_2=AnimationUtils.loadAnimation(this,R.anim.receive)
+
+//        top title
+        button_shop = findViewById(R.id.shop)
+        button_stampBox = findViewById(R.id.stampBox)
 
 
         if(intent.hasExtra("login")) {
@@ -67,6 +74,19 @@ class MainScreen : AppCompatActivity() {
             message.isVisible=false
             message.setClickable(false)
         }
+
+        //상점 버튼
+        button_shop.setOnClickListener {
+            val intent = Intent(this, ShopActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        //우표 박스
+//        button_stampBox.setOnClickListener {
+//            val intent = Intent(this, stampBoxActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
 
     }
