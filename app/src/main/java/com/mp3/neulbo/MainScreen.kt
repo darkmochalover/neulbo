@@ -1,5 +1,6 @@
 package com.mp3.neulbo
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import androidx.core.view.isVisible
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.mp3.neulbo.databinding.ActivityMainBinding
 import kotlinx.coroutines.delay
 
 class MainScreen : AppCompatActivity() {
@@ -24,6 +26,8 @@ class MainScreen : AppCompatActivity() {
     private lateinit var paper_plane: ImageView
     private lateinit var plane: Animation
     private lateinit var plane_2: Animation
+    private var testFragment=Message()
+
 
 //    top title
     private lateinit var button_shop: ImageButton
@@ -31,6 +35,7 @@ class MainScreen : AppCompatActivity() {
     private lateinit var profile: ImageButton
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_screen)
@@ -49,6 +54,8 @@ class MainScreen : AppCompatActivity() {
         calendar_button=findViewById(R.id.calendar)
         paper_plane=findViewById(R.id.paper_plane)
         message=findViewById(R.id.message)
+
+
         plane=AnimationUtils.loadAnimation(this,R.anim.save_diary)
         plane_2=AnimationUtils.loadAnimation(this,R.anim.receive)
 
@@ -69,6 +76,7 @@ class MainScreen : AppCompatActivity() {
             paper_plane.visibility= View.INVISIBLE
 
         }
+
         //일기 추가 버튼
         add_button.setOnClickListener {
             val intent = Intent(this, DiaryActivity::class.java)
@@ -88,7 +96,12 @@ class MainScreen : AppCompatActivity() {
         message.setOnClickListener{
             message.isVisible=false
             message.setClickable(false)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.message_fragment, testFragment)
+                .addToBackStack(null)
+                .commit()
         }
+
 
         //상점 버튼
         button_shop.setOnClickListener {
