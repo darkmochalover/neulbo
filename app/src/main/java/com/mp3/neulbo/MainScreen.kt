@@ -10,6 +10,9 @@ import android.widget.ImageButton
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.core.view.isVisible
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.delay
 
 class MainScreen : AppCompatActivity() {
@@ -30,6 +33,16 @@ class MainScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_screen)
+
+        //데이터베이스 Root를 가져옴
+        /*
+        val myRef = database.getReference("message")
+        myRef.setValue(binding.etInput.text.toString()) -> 데이터 1개가 계속 수정되는 방식
+        myRef.push().setValue(binding.etInput.text.toString()) -> 데이터가 계속 쌓이는 방식
+         */
+        var database = Firebase.database
+        var myRef = database.getReference("User")
+
 
         add_button = findViewById(R.id.add)
         calendar_button=findViewById(R.id.calendar)

@@ -35,10 +35,11 @@ class SignIn : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivitySignInBinding.inflate(layoutInflater)
         //데베 저장 확인
+        /*
         val database = Firebase.database
         val myRef = database.getReference("message")
         myRef.setValue("Hello, World!")
-
+    */
         setContentView(binding.root)
 
             firebaseAuth=FirebaseAuth.getInstance()
