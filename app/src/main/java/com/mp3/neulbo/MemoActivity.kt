@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
@@ -13,7 +14,7 @@ class MemoActivity : AppCompatActivity() {
     private lateinit var dateTextView: TextView
     private lateinit var diaryEditText: EditText
     private lateinit var replyEditText: EditText
-    private lateinit var checkButton: Button
+    private lateinit var checkButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +44,6 @@ class MemoActivity : AppCompatActivity() {
     }
 
     private fun saveDiary(date: Long, diary: String, reply: String) {
-        // 여기에 일기랑 댓글 내용 저장하는 로직을 구현합니다.
-        // 실제로 데이터를 저장하거나 처리해야 하는 경우 여기에 작성합니다.
-        // 이 예시에서는 데이터를 저장하지 않고 Activity를 닫는 동작만 수행합니다.
+        // 여기에 일기랑 댓글 내용 저장
     }
 }
