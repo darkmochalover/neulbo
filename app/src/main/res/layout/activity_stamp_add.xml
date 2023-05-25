@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0bdd7"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/goBack"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:src="@drawable/goback_edit" />
+
+    
+    <ImageView
+        android:id="@+id/addImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="60dp"
+        android:layout_below="@id/goBack"
+        android:src="@drawable/plus"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"/>
+
+    <EditText
+        android:id="@+id/addImageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/addImage"
+        android:text="제목"
+        android:textSize="30dp" />
+
+
+</RelativeLayout>

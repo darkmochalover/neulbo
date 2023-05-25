@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/mailbox"
+        android:id="@+id/stampBox"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="264dp"
@@ -43,6 +43,19 @@
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:src="@drawable/mailbox_edit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/shop"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:src="@drawable/shop_edit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,19 +69,6 @@
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:src="@drawable/calendar_edit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/shop"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:background="@android:color/transparent"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:src="@drawable/shop_edit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
