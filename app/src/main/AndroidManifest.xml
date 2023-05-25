@@ -16,6 +16,9 @@
             android:name=".ShopActivity"
             android:exported="false" />
         <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
             android:name=".shop.BookActivity"
             android:exported="false" />
         <activity

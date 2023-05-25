@@ -28,6 +28,7 @@ class MainScreen : AppCompatActivity() {
 //    top title
     private lateinit var button_shop: ImageButton
     private lateinit var button_stampBox: ImageButton
+    private lateinit var profile: ImageButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +55,7 @@ class MainScreen : AppCompatActivity() {
 //        top title
         button_shop = findViewById(R.id.shop)
         button_stampBox = findViewById(R.id.stampBox)
+        profile=findViewById(R.id.profile)
 
 
         if(intent.hasExtra("login")) {
@@ -97,6 +99,12 @@ class MainScreen : AppCompatActivity() {
         //우표 박스
         button_stampBox.setOnClickListener {
             val intent = Intent(this, StampBoxActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        //프로필
+        profile.setOnClickListener {
+            val intent = Intent(this, Profile::class.java)
             startActivity(intent)
             finish()
         }
