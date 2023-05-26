@@ -12,15 +12,16 @@
 
     <TextView
         android:id="@+id/diary_view"
-        android:layout_width="290dp"
-        android:layout_height="315dp"
+        android:layout_width="247dp"
+        android:layout_height="244dp"
+        android:background="@color/white"
         android:scrollbars="vertical"
         android:text="다른 사람의 일기"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="128dp" />
 
     <EditText
         android:id="@+id/commentText"
@@ -37,7 +38,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/diary_view"
         app:layout_constraintVertical_bias="0.0" />
@@ -46,12 +47,13 @@
         android:id="@+id/check"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:src="@drawable/save_edit"
         app:layout_constraintTop_toBottomOf="@+id/commentText"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="77dp" />
+        tools:layout_editor_absoluteX="83dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
