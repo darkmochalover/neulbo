@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="#f0bdd7">
+
     <ImageButton
         android:id="@+id/goBack"
         android:layout_gravity="right"
@@ -13,18 +14,39 @@
         android:minHeight="0dp"
         android:minWidth="0dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/goback_edit"
-        />
+        android:src="@drawable/goback_edit" />
 
-    <ImageButton
-        android:id="@+id/calendar"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="right"
-        android:background="@android:color/transparent"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:src="@drawable/calendar_edit" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/stampButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            android:background="@android:color/transparent"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:src="@drawable/ac_stamps" />
+
+        <ImageButton
+            android:id="@+id/calendar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:src="@drawable/calendar_edit" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/diaryEditText"
@@ -38,7 +60,28 @@
         android:textSize="18sp"
         android:background="#FFFFCC"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"/>
+        android:textColorHint="@color/black" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/publicRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="공개" />
+
+        <RadioButton
+            android:id="@+id/privateRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비공개" />
+
+    </RadioGroup>
 
     <ImageButton
         android:id="@+id/save"
@@ -49,7 +92,5 @@
         android:background="@android:color/transparent"
         android:src="@drawable/save_edit" />
 
-
-
-
 </LinearLayout>
+
