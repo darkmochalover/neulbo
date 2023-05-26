@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="#f0bdd7">
+
     <ImageButton
         android:id="@+id/goBack"
         android:layout_gravity="right"
@@ -13,8 +14,7 @@
         android:minHeight="0dp"
         android:minWidth="0dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/goback_edit"
-        />
+        android:src="@drawable/goback_edit" />
 
     <ImageButton
         android:id="@+id/calendar"
@@ -38,7 +38,27 @@
         android:textSize="18sp"
         android:background="#FFFFCC"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"/>
+        android:textColorHint="@color/black" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/publicRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공개" />
+
+        <RadioButton
+            android:id="@+id/privateRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비공개" />
+
+    </RadioGroup>
 
     <ImageButton
         android:id="@+id/save"
@@ -48,8 +68,5 @@
         android:minWidth="0dp"
         android:background="@android:color/transparent"
         android:src="@drawable/save_edit" />
-
-
-
 
 </LinearLayout>
