@@ -15,7 +15,6 @@ import java.util.*
 
 class DiaryActivity : AppCompatActivity() {
 
-
     private lateinit var goback: ImageButton
     private lateinit var save:ImageButton
     private lateinit var edit:EditText
