@@ -69,5 +69,6 @@ class DiaryActivity : AppCompatActivity() {
 
         //setValue : 내용 초기화됨 (고쳐야 할듯)
         myRef.child("user").child(userId).push().setValue(diary)
+        myRef.child("user").child(userId).child("point").setValue(+150)
     }
 }
