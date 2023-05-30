@@ -69,6 +69,6 @@ class DiaryActivity : AppCompatActivity() {
         val diary = Diary(content, Date)
 
         //setValue : 내용 초기화됨 (고쳐야 할듯)
-        myRef.child("user").child(userId).setValue(diary)
+        myRef.child("user").child(userId).push().setValue(diary)
     }
 }
