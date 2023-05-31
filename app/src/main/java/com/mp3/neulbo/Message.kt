@@ -24,7 +24,7 @@ class Message : Fragment() {
         testBinding = FragmentMessageBinding.inflate(inflater, container, false)
         val view = testBinding.root
 
-        text=text.findViewById(R.id.diary_view)
+        text=view.findViewById(R.id.diary_view)
 
         check = view.findViewById(R.id.check)
         check.setOnClickListener {
