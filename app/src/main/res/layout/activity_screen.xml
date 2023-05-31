@@ -97,6 +97,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+        <TextView
+            android:id="@+id/pointText"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/rounded_background"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="0 points "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:gravity="end"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </FrameLayout>
     <FrameLayout

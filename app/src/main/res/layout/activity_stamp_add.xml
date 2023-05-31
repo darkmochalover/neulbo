@@ -16,28 +16,46 @@
         android:minHeight="0dp"
         android:src="@drawable/goback_edit" />
 
-    
     <ImageView
-        android:id="@+id/addImage"
+        android:id="@+id/addImageView"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="60dp"
-        android:layout_below="@id/goBack"
-        android:src="@drawable/plus"
-        android:scaleType="centerCrop"
-        android:background="@android:color/transparent"/>
+        android:layout_marginTop="110dp"
+        android:background="#f0bd00"/>
+
+    <Button
+        android:id="@+id/addImage"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="80dp"
+        android:layout_below="@id/addImageView"
+        android:text="사진 업로드"
+        android:textSize="25dp"
+        android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/addImageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_below="@id/addImage"
-        android:text="제목"
-        android:textSize="30dp" />
+        android:hint="사진의 이름을 적어주세요!"
+        android:textSize="20dp" />
 
+    <ImageButton
+        android:id="@+id/addSaveImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/addImage"
+        android:layout_toRightOf="@id/addImageText"
+        android:src="@drawable/save_edit"
+        android:background="@android:color/transparent"/>
 
 </RelativeLayout>

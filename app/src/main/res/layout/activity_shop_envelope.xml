@@ -16,115 +16,93 @@
         android:minHeight="0dp"
         android:src="@drawable/goback_edit" />
 
+
     <ImageButton
-        android:id="@+id/addStamp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@id/goBack"
+        android:id="@+id/envelope1Image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/goBack"
+        android:src="@drawable/envelope1"
         android:scaleType="centerCrop"
-        android:background="@android:color/transparent"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/envelope1Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/envelope1Image"
+        android:text="envelope 1"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+    <ImageButton
+        android:id="@+id/envelope2Image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/envelope1Text"
+        android:src="@drawable/envelope2"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/envelope2Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/envelope2Image"
+        android:text="envelope 2"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+    <ImageButton
+        android:id="@+id/envelope3Image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/goBack"
+        android:layout_toRightOf="@id/envelope1Image"
+        android:src="@drawable/envelope3"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/envelope3Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/envelope3Image"
+        android:layout_alignLeft="@id/envelope3Image"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginTop="5dp"
+        android:text="envelope 3"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/pointText"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/rounded_background"
+        android:gravity="end"
         android:minWidth="0dp"
         android:minHeight="0dp"
-        android:src="@drawable/plus" />
-
-    
-    <ImageButton
-        android:id="@+id/cloud1Image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/goBack"
-        android:src="@drawable/cloud1"
-        android:scaleType="centerCrop"
-        android:background="@android:color/transparent"/>
-
-    <TextView
-        android:id="@+id/cloud1Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/cloud1Image"
-        android:text="cloud1"
-        android:textSize="22dp"
+        android:text="0 points "
+        android:textSize="25dp"
         android:textStyle="bold" />
-
-
-    <ImageButton
-        android:id="@+id/cloud3Image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/cloud1Text"
-        android:src="@drawable/cloud3"
-        android:scaleType="centerCrop"
-        android:background="@android:color/transparent" />
-
-    <TextView
-        android:id="@+id/cloud3Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/cloud3Image"
-        android:text="cloud3"
-        android:textSize="22dp"
-        android:textStyle="bold" />
-
-
-    <ImageButton
-        android:id="@+id/cloud2Image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/goBack"
-        android:layout_toRightOf="@id/cloud1Image"
-        android:src="@drawable/cloud2"
-        android:scaleType="centerCrop"
-        android:background="@android:color/transparent" />
-
-    <TextView
-        android:id="@+id/cloud2Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/cloud2Image"
-        android:layout_alignLeft="@id/cloud2Image"
-        android:text="cloud2"
-        android:textSize="22dp"
-        android:textStyle="bold" />
-
-    <ImageButton
-        android:id="@+id/importedImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/cloud2Text"
-        android:layout_toRightOf="@id/cloud1Image"
-        android:scaleType="centerCrop"
-        android:background="@android:color/transparent" />
-
-    <TextView
-        android:id="@+id/importedText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/importedImage"
-        android:layout_alignLeft="@id/cloud2Image"
-        android:textSize="22dp"
-        android:textStyle="bold" />
-
 
 </RelativeLayout>
