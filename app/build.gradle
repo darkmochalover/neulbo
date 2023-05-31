@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
+    // id 'kotlin-android-extensions'
 //    id 'kotlin-parcelize'
 //    id 'kotlin-kapt'
     id 'com.google.gms.google-services'
@@ -117,10 +117,8 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
-    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
-    implementation 'org.tensorflow:tensorflow-lite-metadata:0.2.0'
-    implementation 'org.tensorflow:tensorflow-lite:2.7.0'
-    implementation 'com.github.huggingface:transformers:4.11.3'
+
+//    implementation 'com.github.huggingface:transformers:4.11.3'
 
     // ------------
 

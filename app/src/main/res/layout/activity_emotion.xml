@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
             name="gson"
-            type="com.mp3.client.EmotionActivity" />
+            type="com.mp3.neulbo.client.EmotionActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
