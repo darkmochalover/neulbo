@@ -18,25 +18,25 @@
 
     
     <ImageButton
-        android:id="@+id/stampsImage"
+        android:id="@+id/backgroundsImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="10dp"
         android:layout_below="@id/goBack"
-        android:src="@drawable/ac_stamps"
+        android:src="@drawable/ac_background"
         android:scaleType="centerCrop"
         android:background="@android:color/transparent"/>
 
     <TextView
-        android:id="@+id/stampsText"
+        android:id="@+id/backgroundsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
-        android:layout_below="@id/stampsImage"
-        android:text="stamps"
+        android:layout_below="@id/backgroundsImage"
+        android:text="background"
         android:textSize="22dp"
         android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="30dp"
-        android:layout_below="@id/stampsText"
+        android:layout_below="@id/backgroundsText"
         android:src="@drawable/ac_wallpaper"
         android:scaleType="centerCrop"
         android:background="@android:color/transparent" />
@@ -101,18 +101,17 @@
         android:scaleType="centerCrop"
         android:background="@android:color/transparent" />
 
+
     <TextView
         android:id="@+id/stationeryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="5dp"
         android:layout_below="@id/stationeryImage"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="6dp"
         android:text="stationery"
         android:textSize="22dp"
         android:textStyle="bold" />
-
-
 
     <ImageButton
         android:id="@+id/bookImage"
@@ -122,7 +121,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="10dp"
         android:layout_below="@id/goBack"
-        android:layout_toRightOf="@id/stampsImage"
+        android:layout_toRightOf="@id/backgroundsImage"
         android:src="@drawable/ac_book"
         android:scaleType="centerCrop"
         android:background="@android:color/transparent" />
@@ -148,7 +147,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="30dp"
         android:layout_below="@id/bookText"
-        android:layout_toRightOf="@id/stampsImage"
+        android:layout_toRightOf="@id/backgroundsImage"
         android:src="@drawable/ac_font"
         android:scaleType="centerCrop"
         android:background="@android:color/transparent" />
@@ -174,7 +173,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="30dp"
         android:layout_below="@id/fontText"
-        android:layout_toRightOf="@id/stampsImage"
+        android:layout_toRightOf="@id/backgroundsImage"
         android:src="@drawable/ac_emotion"
         android:scaleType="centerCrop"
         android:background="@android:color/transparent" />
@@ -200,7 +199,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="30dp"
         android:layout_below="@id/emotionText"
-        android:layout_toRightOf="@id/stampsImage"
+        android:layout_toRightOf="@id/backgroundsImage"
         android:src="@drawable/ac_origami"
         android:scaleType="centerCrop"
         android:background="@android:color/transparent" />
@@ -215,6 +214,20 @@
         android:layout_alignLeft="@id/origamiImage"
         android:text="origami"
         android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/pointText"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/rounded_background"
+        android:gravity="end"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="0 points "
+        android:textSize="25dp"
         android:textStyle="bold" />
 
 </RelativeLayout>

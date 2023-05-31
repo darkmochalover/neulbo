@@ -16,77 +16,79 @@
         android:minHeight="0dp"
         android:src="@drawable/goback_edit" />
 
-    
+
     <ImageButton
-        android:id="@+id/item1Image"
+        android:id="@+id/font1Image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="10dp"
         android:layout_below="@id/goBack"
-        android:src="@drawable/book1"
-        android:scaleType="centerCrop"
+        android:src="@drawable/font1"
+        android:scaleType="fitCenter"
         android:background="@android:color/transparent" />
 
-    <TextView
-        android:id="@+id/item1Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/item1Image"
-        android:text="blue book"
-        android:textSize="22dp"
-        android:textStyle="bold" />
-
-
     <ImageButton
-        android:id="@+id/item2Image"
+        android:id="@+id/font2Image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="30dp"
-        android:layout_below="@id/item1Text"
-        android:src="@drawable/book2"
-        android:scaleType="centerCrop"
+        android:layout_below="@id/font1Text"
+        android:src="@drawable/font2"
+        android:scaleType="fitCenter"
         android:background="@android:color/transparent" />
 
-    <TextView
-        android:id="@+id/book2Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/item2Image"
-        android:text="red book"
-        android:textSize="22dp"
-        android:textStyle="bold" />
-
-
     <ImageButton
-        android:id="@+id/item3Image"
+        android:id="@+id/font3Image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="10dp"
         android:layout_below="@id/goBack"
-        android:layout_toRightOf="@id/item1Image"
-        android:src="@drawable/book3"
-        android:scaleType="centerCrop"
+        android:layout_toRightOf="@id/font1Image"
+        android:src="@drawable/font3"
+        android:scaleType="fitCenter"
         android:background="@android:color/transparent" />
-
     <TextView
-        android:id="@+id/item3Text"
+        android:id="@+id/font1Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
-        android:layout_below="@id/item3Image"
-        android:layout_alignLeft="@id/item3Image"
-        android:text="brown book"
+        android:layout_below="@id/font1Image"
+        android:text="font 1"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+
+    <TextView
+        android:id="@+id/font2Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/font2Image"
+        android:text="font 2"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+
+    <TextView
+        android:id="@+id/font3Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/font3Image"
+        android:layout_alignLeft="@id/font3Image"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginTop="5dp"
+        android:text="font 3"
         android:textSize="22dp"
         android:textStyle="bold" />
 

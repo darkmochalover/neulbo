@@ -18,7 +18,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.mp3.neulbo.client.EmotionActivity
 import com.mp3.neulbo.databinding.ActivityMainBinding
+//import com.mp3.neulbo.model.EmotionDetect
 import kotlinx.coroutines.delay
 
 class MainScreen : AppCompatActivity() {
@@ -38,6 +40,10 @@ class MainScreen : AppCompatActivity() {
     private lateinit var button_shop: ImageButton
     private lateinit var button_stampBox: ImageButton
     private lateinit var profile: ImageButton
+
+    // emotion detect testing
+    private lateinit var button_emotion: ImageButton
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -73,10 +79,14 @@ class MainScreen : AppCompatActivity() {
         plane=AnimationUtils.loadAnimation(this,R.anim.save_diary)
         plane_2=AnimationUtils.loadAnimation(this,R.anim.receive)
 
+
 //        top title
         button_shop = findViewById(R.id.shop)
         button_stampBox = findViewById(R.id.stampBox)
         profile=findViewById(R.id.profile)
+
+        // emotion detect button
+        button_emotion = findViewById(R.id.emotion);
 
 
         if(intent.hasExtra("login")) {
@@ -136,7 +146,12 @@ class MainScreen : AppCompatActivity() {
             finish()
         }
 
-
+        // NLP Testing
+        button_emotion.setOnClickListener{
+            val intent = Intent(this, EmotionActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
 

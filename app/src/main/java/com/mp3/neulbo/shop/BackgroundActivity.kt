@@ -1,0 +1,43 @@
+package com.mp3.neulbo.shop
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.EditText
+import android.widget.ImageButton
+import com.mp3.neulbo.ShopActivity
+
+
+import com.mp3.neulbo.*
+
+class BackgroundActivity : AppCompatActivity() {
+
+    private lateinit var goback: ImageButton
+
+    private lateinit var background1: ImageButton
+    private lateinit var background2: ImageButton
+    private lateinit var background3: ImageButton
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_shop_background)
+
+
+        goback=findViewById(R.id.goBack)
+
+        background1 = findViewById(R.id.background1Image)
+        background2 = findViewById(R.id.background2Image)
+        background3 = findViewById(R.id.background3Image)
+
+
+        //뒤로가기 버튼
+        goback.setOnClickListener {
+            val intentSend = Intent(this, ShopActivity::class.java)
+            startActivity(intentSend)
+            finish()
+        }
+
+
+    }
+}

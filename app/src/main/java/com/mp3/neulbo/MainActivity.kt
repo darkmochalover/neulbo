@@ -10,3 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
+
+///Users/ajin/Library/Android/sdk
+
+///Users/ajin/Desktop/2023/모바일프로그래밍/neulbo_test/app/src/main/java/com/mp3
