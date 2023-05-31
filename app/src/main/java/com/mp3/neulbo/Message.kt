@@ -1,6 +1,6 @@
 package com.mp3.neulbo
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,13 +9,29 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+
 import androidx.fragment.app.FragmentManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+
+import kotlin.random.Random
+
+
 import com.mp3.neulbo.databinding.FragmentMessageBinding
+
 
 class Message : Fragment() {
     lateinit var testBinding: FragmentMessageBinding
     private lateinit var check: ImageButton
     private lateinit var text: TextView
+
+    var auth : FirebaseAuth? = null
+    var myRef = FirebaseDatabase.getInstance().reference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -90,6 +106,7 @@ class Message : Fragment() {
                 // 데이터를 읽어오는 도중에 오류가 발생했을 때 처리하는 부분
             }
         })
+
 
 
         check = view.findViewById(R.id.check)
