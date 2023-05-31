@@ -7,7 +7,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 
 import java.text.SimpleDateFormat
@@ -69,6 +72,18 @@ class DiaryActivity : AppCompatActivity() {
 
         //setValue : 내용 초기화됨 (고쳐야 할듯)
         myRef.child("user").child(userId).push().setValue(diary)
-        myRef.child("user").child(userId).child("point").setValue(+150)
+        myRef.child("user").child(userId).child("point").addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val currentValue = dataSnapshot.getValue(Int::class.java)
+                val updatedValue = currentValue?.plus(150)
+                myRef.child("user").child(userId).child("point").setValue(updatedValue)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
+
     }
 }
