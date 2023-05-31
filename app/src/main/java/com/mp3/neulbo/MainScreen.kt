@@ -10,6 +10,7 @@ import android.view.animation.Animation
 import android.widget.ImageButton
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.view.isVisible
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -18,9 +19,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.mp3.neulbo.client.EmotionActivity
 import com.mp3.neulbo.databinding.ActivityMainBinding
-//import com.mp3.neulbo.model.EmotionDetect
 import kotlinx.coroutines.delay
 
 class MainScreen : AppCompatActivity() {
@@ -30,20 +29,21 @@ class MainScreen : AppCompatActivity() {
     private lateinit var add_button: ImageButton
     private lateinit var calendar_button: ImageButton
     private lateinit var message: ImageButton
+    private lateinit var points:TextView
     private lateinit var paper_plane: ImageView
     private lateinit var plane: Animation
     private lateinit var plane_2: Animation
     private var testFragment=Message()
+
+    var auth : FirebaseAuth? = null
+
+    var myRef = FirebaseDatabase.getInstance().reference
 
 
 //    top title
     private lateinit var button_shop: ImageButton
     private lateinit var button_stampBox: ImageButton
     private lateinit var profile: ImageButton
-
-    // emotion detect testing
-    private lateinit var button_emotion: ImageButton
-
 
 
     @SuppressLint("MissingInflatedId")
@@ -74,19 +74,24 @@ class MainScreen : AppCompatActivity() {
         calendar_button=findViewById(R.id.calendar)
         paper_plane=findViewById(R.id.paper_plane)
         message=findViewById(R.id.message)
+        points=findViewById(R.id.pointText)
+        auth = Firebase.auth
+        var uid = auth?.currentUser?.uid
+
+
+        getPointValue(uid.toString()) { currentValue ->
+
+            points.setText(currentValue+"points")
+        }
 
 
         plane=AnimationUtils.loadAnimation(this,R.anim.save_diary)
         plane_2=AnimationUtils.loadAnimation(this,R.anim.receive)
 
-
 //        top title
         button_shop = findViewById(R.id.shop)
         button_stampBox = findViewById(R.id.stampBox)
         profile=findViewById(R.id.profile)
-
-        // emotion detect button
-        button_emotion = findViewById(R.id.emotion);
 
 
         if(intent.hasExtra("login")) {
@@ -146,13 +151,21 @@ class MainScreen : AppCompatActivity() {
             finish()
         }
 
-        // NLP Testing
-        button_emotion.setOnClickListener{
-            val intent = Intent(this, EmotionActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+
+
     }
 
+    private fun getPointValue(userId: String, callback: (String?) -> Unit) {
+        val pointRef = myRef.child("user").child(userId).child("point")
+        pointRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val currentValue = dataSnapshot.getValue(Int::class.java)?.toString()
+                callback(currentValue)
+            }
 
+            override fun onCancelled(databaseError: DatabaseError) {
+                // 처리 중 오류가 발생한 경우의 동작을 정의할 수 있습니다.
+            }
+        })
+    }
 }
