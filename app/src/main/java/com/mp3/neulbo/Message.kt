@@ -1,6 +1,6 @@
 package com.mp3.neulbo
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,13 +9,29 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+
 import androidx.fragment.app.FragmentManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+
+import kotlin.random.Random
+
+
 import com.mp3.neulbo.databinding.FragmentMessageBinding
+
 
 class Message : Fragment() {
     lateinit var testBinding: FragmentMessageBinding
     private lateinit var check: ImageButton
     private lateinit var text: TextView
+
+    var auth : FirebaseAuth? = null
+    var myRef = FirebaseDatabase.getInstance().reference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +40,74 @@ class Message : Fragment() {
         testBinding = FragmentMessageBinding.inflate(inflater, container, false)
         val view = testBinding.root
 
-        text=text.findViewById(R.id.diary_view)
+        text = view.findViewById(R.id.diary_view)
+        auth = Firebase.auth
+
+
+        val otherUserRef = myRef.child("user")
+
+        otherUserRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val keys = mutableListOf<String?>()
+                for (snapshot in dataSnapshot.children) {
+                    val userId: String? = snapshot.key ?: ""
+                    Log.d("Tag", "User ID: $userId")
+
+                    userId?.let {
+                        keys.add(userId)
+                    }
+                }
+                val randomIndex = Random.nextInt(keys.size)
+                val randomKey = keys[randomIndex]
+                Log.d("Tag", "User ID random: $randomKey")
+
+
+
+                val userRef = myRef.child("user").child(randomKey.toString())
+
+                userRef.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        val keys = mutableListOf<String?>()
+                        val values = mutableListOf<Any?>()
+
+                        for (snapshot in dataSnapshot.children) {
+                            val key: String? = snapshot.key
+                            val value: Any? = snapshot.value
+
+                            key?.let {
+                                keys.add(it)
+                            }
+
+                            value?.let {
+                                values.add(it)
+                            }
+                        }
+
+                        Log.d("Tag", "Value: $values")
+                        values.removeLast()
+                        Log.d("Tag", "Value: $values")
+
+                        val randomContent = Random.nextInt(values.size)
+                        val randomValue = values[randomContent]
+                        Log.d("Tag", "User ID random: $randomValue")
+                        val contentValue = randomValue?.toString()?.substringAfter("content=")?.substringBefore("}")
+                        Log.d("Tag", "User ID random: $contentValue")
+                        text.text = contentValue
+                    }
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        // 데이터를 읽어오는 도중에 오류가 발생했을 때 처리하는 부분
+                    }
+                })
+
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // 데이터를 읽어오는 도중에 오류가 발생했을 때 처리하는 부분
+            }
+        })
+
+
 
         check = view.findViewById(R.id.check)
         check.setOnClickListener {
