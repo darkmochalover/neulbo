@@ -35,7 +35,7 @@
             android:background="@android:color/transparent"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:src="@drawable/ac_stamps" />
+            android:src="@drawable/ac_background" />
 
         <ImageButton
             android:id="@+id/calendar"

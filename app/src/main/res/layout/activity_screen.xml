@@ -66,8 +66,7 @@
             android:background="@android:color/transparent"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:src="@drawable/ac_stamps"
-            android:scaleType="centerCrop"
+            android:src="@drawable/mailbox_edit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

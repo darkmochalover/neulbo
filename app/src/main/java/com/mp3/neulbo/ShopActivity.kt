@@ -17,7 +17,7 @@ class ShopActivity : AppCompatActivity() {
     private lateinit var button_envelopes: ImageButton
     private lateinit var button_font: ImageButton
     private lateinit var button_origami: ImageButton
-    private lateinit var button_stamp: ImageButton
+    private lateinit var button_background: ImageButton
     private lateinit var button_stationery: ImageButton
     private lateinit var button_wallpaper: ImageButton
 
@@ -35,7 +35,7 @@ class ShopActivity : AppCompatActivity() {
         button_envelopes = findViewById(R.id.envelopesImage)
         button_font = findViewById(R.id.fontImage)
         button_origami = findViewById(R.id.origamiImage)
-        button_stamp = findViewById(R.id.stampsImage)
+        button_background = findViewById(R.id.backgroundsImage)
         button_stationery = findViewById(R.id.stationeryImage)
         button_wallpaper = findViewById(R.id.wallpaperImage)
 
@@ -45,6 +45,50 @@ class ShopActivity : AppCompatActivity() {
             startActivity(intentSend)
             finish()
         }
+
+        button_background.setOnClickListener {
+            val intentSend = Intent(this, BackgroundActivity::class.java)
+            startActivity(intentSend)
+            finish()
+        }
+
+        button_origami.setOnClickListener {
+            val intentSend = Intent(this, OrgamiActivity::class.java)
+            startActivity(intentSend)
+            finish()
+        }
+
+        button_stationery.setOnClickListener {
+            val intentSend = Intent(this, StationeryActivity::class.java)
+            startActivity(intentSend)
+            finish()
+        }
+
+        button_font.setOnClickListener {
+            val intentSend = Intent(this, FontActivity::class.java)
+            startActivity(intentSend)
+            finish()
+        }
+
+        button_wallpaper.setOnClickListener {
+            val intentSend = Intent(this, WallpaperActivity::class.java)
+            startActivity(intentSend)
+            finish()
+        }
+
+        button_wallpaper.setOnClickListener {
+            val intentSend = Intent(this, EnvelopeActivity::class.java)
+            startActivity(intentSend)
+            finish()
+        }
+
+        button_emotion.setOnClickListener {
+            val intentSend = Intent(this, EmotionActivity::class.java)
+            startActivity(intentSend)
+            finish()
+        }
+
+
 
 
 

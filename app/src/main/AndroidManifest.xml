@@ -18,6 +18,27 @@
             android:name=".ShopActivity"
             android:exported="false" />
         <activity
+            android:name=".shop.FontActivity"
+            android:exported="false" />
+        <activity
+            android:name=".shop.EmotionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".shop.EnvelopeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".shop.BackgroundActivity"
+            android:exported="false" />
+        <activity
+            android:name=".shop.OrgamiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".shop.StationeryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".shop.WallpaperActivity"
+            android:exported="false" />
+        <activity
             android:name=".Profile"
             android:exported="false" />
         <activity
