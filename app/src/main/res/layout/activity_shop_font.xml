@@ -26,9 +26,33 @@
         android:layout_marginTop="10dp"
         android:layout_below="@id/goBack"
         android:src="@drawable/font1"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:background="@android:color/transparent" />
 
+    <ImageButton
+        android:id="@+id/font2Image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/font1Text"
+        android:src="@drawable/font2"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent" />
+
+    <ImageButton
+        android:id="@+id/font3Image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/goBack"
+        android:layout_toRightOf="@id/font1Image"
+        android:src="@drawable/font3"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent" />
     <TextView
         android:id="@+id/font1Text"
         android:layout_width="wrap_content"
@@ -41,17 +65,6 @@
         android:textStyle="bold" />
 
 
-    <ImageButton
-        android:id="@+id/font2Image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/font1Text"
-        android:src="@drawable/font2"
-        android:scaleType="centerCrop"
-        android:background="@android:color/transparent" />
 
     <TextView
         android:id="@+id/font2Text"
@@ -65,18 +78,6 @@
         android:textStyle="bold" />
 
 
-    <ImageButton
-        android:id="@+id/font3Image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/goBack"
-        android:layout_toRightOf="@id/font1Image"
-        android:src="@drawable/font3"
-        android:scaleType="centerCrop"
-        android:background="@android:color/transparent" />
 
     <TextView
         android:id="@+id/font3Text"

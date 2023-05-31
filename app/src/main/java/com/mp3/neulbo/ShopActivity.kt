@@ -76,7 +76,7 @@ class ShopActivity : AppCompatActivity() {
             finish()
         }
 
-        button_wallpaper.setOnClickListener {
+        button_envelopes.setOnClickListener {
             val intentSend = Intent(this, EnvelopeActivity::class.java)
             startActivity(intentSend)
             finish()
