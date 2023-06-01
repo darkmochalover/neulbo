@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,10 +13,14 @@
         android:label="neulbo"
         android:supportsRtl="true"
         android:theme="@style/Theme.EmailAuthenticationFirebase"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity android:name=".client.EmotionActivity"
+        <activity
+            android:name=".client.SampleDiaryActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".client.EmotionActivity"
+            android:exported="false" />
         <activity
             android:name=".ShopActivity"
             android:exported="false" />

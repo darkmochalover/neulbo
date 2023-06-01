@@ -19,6 +19,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.mp3.neulbo.client.SampleDiaryActivity
 import com.mp3.neulbo.databinding.ActivityMainBinding
 import kotlinx.coroutines.delay
 
@@ -109,7 +110,7 @@ class MainScreen : AppCompatActivity() {
 
         //일기 추가 버튼
         add_button.setOnClickListener {
-            val intent = Intent(this, DiaryActivity::class.java)
+            val intent = Intent(this, SampleDiaryActivity::class.java)
             startActivity(intent)
             intent.putExtra("buttonVisible", message.isVisible)
             finish()

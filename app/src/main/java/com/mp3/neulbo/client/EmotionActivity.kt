@@ -68,7 +68,6 @@ class EmotionActivity : AppCompatActivity() {
 
             // param이 결과 감정.
 
-            binding.predEmotion.setTextKeepState(param)
         }
 
         override fun onFailure(call: Call<Emotion>, t: Throwable) {
