@@ -164,7 +164,7 @@ class MainScreen : AppCompatActivity() {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // 처리 중 오류가 발생한 경우의 동작을 정의할 수 있습니다.
+
             }
         })
     }
