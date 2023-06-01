@@ -15,6 +15,7 @@ class EmotionActivity : AppCompatActivity() {
     private lateinit var goback: ImageButton
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_emotion)
