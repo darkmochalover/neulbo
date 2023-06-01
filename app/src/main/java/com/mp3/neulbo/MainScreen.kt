@@ -46,6 +46,7 @@ class MainScreen : AppCompatActivity() {
     private lateinit var profile: ImageButton
 
 
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +77,7 @@ class MainScreen : AppCompatActivity() {
         message=findViewById(R.id.message)
         points=findViewById(R.id.pointText)
         auth = Firebase.auth
-        var uid = auth?.currentUser?.uid
+        val uid = auth?.currentUser?.uid
 
 
         getPointValue(uid.toString()) { currentValue ->
@@ -152,10 +153,9 @@ class MainScreen : AppCompatActivity() {
         }
 
 
-
     }
 
-    private fun getPointValue(userId: String, callback: (String?) -> Unit) {
+    fun getPointValue(userId: String, callback: (String?) -> Unit) {
         val pointRef = myRef.child("user").child(userId).child("point")
         pointRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -168,4 +168,8 @@ class MainScreen : AppCompatActivity() {
             }
         })
     }
+
+
+
+
 }
