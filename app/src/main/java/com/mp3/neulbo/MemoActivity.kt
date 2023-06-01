@@ -38,28 +38,21 @@ class MemoActivity : AppCompatActivity() {
         calendar.timeInMillis = selectedDate
         val dateFormat = SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault())
         val dateFormat2 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-//        var selecDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        //var selecDate = dateFormat2.toString()
         val dateStr = dateFormat.format(calendar.time)
 
         dateTextView.text = dateStr
         //사용자 ID와 선택한 날짜 설정
         auth = Firebase.auth
         var uid = auth?.currentUser?.uid.toString()
-        //var selecDate = selectedDate.toString()
-        //val userId = auth.toString()
-        fetchUserDiaries(uid, dateFormat2.format(calendar.time), diaryEditText)
+
+        fetchUserDiaries(uid, dateFormat2.format(calendar.time), diaryEditText, replyEditText)
 
         checkButton.setOnClickListener {
-            val diary = diaryEditText.text.toString()
-            val reply = replyEditText.text.toString()
-
-            //saveDiary(selectedDate, diary, reply)
             finish()
         }
     }
     //사용자 ID에 해당하는 모든 일기 불러오기
-    fun fetchUserDiaries(userId: String, selectedDate: String, diaryEditText: EditText) {
+    fun fetchUserDiaries(userId: String, selectedDate: String, diaryEditText: EditText, replyEditText: EditText) {
         val query = myRef.child(userId).orderByChild("date").equalTo(selectedDate)
 
         query.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -67,10 +60,13 @@ class MemoActivity : AppCompatActivity() {
                 if (snapshot.exists()) {
                     for (diarySnapshot in snapshot.children){
                         val content = diarySnapshot.child("content").getValue(String::class.java)
-                        //일기내용활용
+                        //val commentSnapshot = diarySnapshot.child("commentId")
+
                         //EditText에 일기 내용 설정
                         diaryEditText.setText(content)
-                    }
+
+                        fetchCommentFromDiary(diarySnapshot, replyEditText)
+                        }
                 }
                 else {
                     //해당 날짜 일기 없는 경우
@@ -82,8 +78,13 @@ class MemoActivity : AppCompatActivity() {
             }
         })
     }
-
-    /*private fun saveDiary(date: Long, diary: String, reply: String) {
-        // 여기에 일기랑 댓글 내용 저장
-    }*/
+    private fun fetchCommentFromDiary(diarySnapshot: DataSnapshot, replyEditText: EditText) {
+        for (commentIdSnapshot in diarySnapshot.children) {
+            if (commentIdSnapshot.key != "content" && commentIdSnapshot.key != "date"){
+                val commentContent = commentIdSnapshot.child("comment").getValue(String::class.java)
+                replyEditText.setText(commentContent)
+                break  // 첫 번째 댓글만 가져오고 종료
+            }
+        }
+    }
 }
