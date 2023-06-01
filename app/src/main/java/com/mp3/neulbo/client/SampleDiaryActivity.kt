@@ -43,6 +43,8 @@ class SampleDiaryActivity : AppCompatActivity() {
     var auth : FirebaseAuth? = null
     var myRef = FirebaseDatabase.getInstance().reference
 
+    var param: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sample_diary)
@@ -67,6 +69,8 @@ class SampleDiaryActivity : AppCompatActivity() {
 
 
 
+
+
         //저장버튼
         save!!.setOnClickListener{
             //일기내용
@@ -76,15 +80,16 @@ class SampleDiaryActivity : AppCompatActivity() {
 
             val emo = edit.text.toString()
             Log.d("input:" , emo) // input 확인용
-            callEmotionDetect(emo)
-            if (uid != null) {
-                writeDiary(uid,input, currentTime)
-            }
+            callEmotionDetect(emo) { param ->
+                if (uid != null) {
+                    writeDiary(uid, input, currentTime, param)
+                }
 
-            val intentSend = Intent(this, MainScreen::class.java)
-            intentSend.putExtra("diaryText",input)
-            startActivity(intentSend)
-            finish()
+                val intentSend = Intent(this, MainScreen::class.java)
+                intentSend.putExtra("diaryText", input)
+                startActivity(intentSend)
+                finish()
+            }
         }
     }
 
@@ -94,9 +99,9 @@ class SampleDiaryActivity : AppCompatActivity() {
         val date = Date()
         return dateFormat.format(date)
     }
-    private fun writeDiary(userId: String, content: String, Date:String){
+    private fun writeDiary(userId: String, content: String, Date:String, emo:String){
         val isPublic = radioGroup.checkedRadioButtonId == R.id.publicRadio
-        val diary = Diary(content, Date, isPublic)
+        val diary = Diary(content, Date, isPublic, emo)
 
         //setValue : 내용 초기화됨 (고쳐야 할듯)
         myRef.child("user").child(userId).push().setValue(diary)
@@ -138,7 +143,7 @@ class SampleDiaryActivity : AppCompatActivity() {
             val result = gson.toJson(emotion) // Emotion 객체를 JSON 문자열로 변환
 
             val emotionObj = gson.fromJson(result, Emotion::class.java)
-            val param = emotionObj.param
+            param = emotionObj.param
 
             Log.d("test", "결과는 $param")
             var uid = auth?.currentUser?.uid
@@ -157,11 +162,25 @@ class SampleDiaryActivity : AppCompatActivity() {
     })
 
 
-    private fun callEmotionDetect(InputText: String){
-//        print("input is: $InputText")
-        mCallAIReply = mRetrofitAPI.getAIReply(InputText) // RetrofitAPI 에서 JSON 객체를 요청해서 반환하는 메소드 호출
-        mCallAIReply.enqueue(mRetrofitCallback) // 응답을 큐에 넣어 대기 시켜놓음. 즉, 응답이 생기면 뱉어낸다.
+    private fun callEmotionDetect(InputText: String, callback: (String) -> Unit) {
+        mCallAIReply = mRetrofitAPI.getAIReply(InputText)
+        mCallAIReply.enqueue(object : retrofit2.Callback<Emotion> {
+            override fun onResponse(call: Call<Emotion>, response: Response<Emotion>) {
+                var gson = Gson()
+                val emotion = response.body()
+                val result = gson.toJson(emotion)
+                val emotionObj = gson.fromJson(result, Emotion::class.java)
+                val param = emotionObj.param
+                Log.d("test", "결과는 $param")
+                callback(param)
+            }
 
+            override fun onFailure(call: Call<Emotion>, t: Throwable) {
+                t.printStackTrace()
+                Log.d("test", "에러입니다. ${t.message}")
+                ServerConnectErrorToast()
+            }
+        })
     }
     fun changeEmotionValue(userId: String,Emotion:String) {
         val pointRef = myRef.child("user").child(userId).child(Emotion)

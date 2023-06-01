@@ -4,11 +4,13 @@ class Diary {
     var content: String?= null
     var Date: String?= null
     var isPublic: Boolean?= null
+    var emotion: String?= null
 
-    constructor(content: String?, Date: String?, isPublic: Boolean?) {
+    constructor(content: String?, Date: String?, isPublic: Boolean?, emotion: String?) {
         this.content = content
         this.Date = Date
         this.isPublic = isPublic
+        this.emotion = emotion
     }
     fun getContent(content: String): String{
         return content
