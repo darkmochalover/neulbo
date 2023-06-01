@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="일기내용"
+        android:textSize="25dp"
         android:background="#FFFFCC"/>
 
     <TextView
@@ -28,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="일기댓글"
+        android:textSize="25dp"
         android:background="#FFFFCC"/>
 
     <TextView

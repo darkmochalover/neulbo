@@ -36,7 +36,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
         android:layout_below="@id/background1Image"
-        android:text="background 1"
+        android:text="85000 points"
         android:textSize="22dp"
         android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
         android:layout_below="@id/background2Image"
-        android:text="background 2"
+        android:text="100000 points"
         android:textSize="22dp"
         android:textStyle="bold" />
 
@@ -87,7 +87,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginLeft="-5dp"
         android:layout_marginTop="5dp"
-        android:text="background 3"
+        android:text="70000 points"
         android:textSize="22dp"
         android:textStyle="bold" />
 
