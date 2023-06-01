@@ -22,6 +22,9 @@
             android:name=".client.EmotionActivity"
             android:exported="false" />
         <activity
+            android:name="PurchaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".ShopActivity"
             android:exported="false" />
         <activity
