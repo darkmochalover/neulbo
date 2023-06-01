@@ -39,10 +39,12 @@ class SampleDiaryActivity : AppCompatActivity() {
     lateinit var mRetrofit : Retrofit // 사용할 레트로핏 객체
     lateinit var mRetrofitAPI: RetrofitAPI // 레트로핏 api 객체
     lateinit var mCallAIReply : retrofit2.Call<Emotion> // Json 형식의 데이터를 요청하는 객체
+    var input:String=""
+    var currentTime:String=""
 
     var auth : FirebaseAuth? = null
     var myRef = FirebaseDatabase.getInstance().reference
-
+    var param: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sample_diary)
@@ -70,16 +72,14 @@ class SampleDiaryActivity : AppCompatActivity() {
         //저장버튼
         save!!.setOnClickListener{
             //일기내용
-            val currentTime = getCurrentDateTime()
+            currentTime = getCurrentDateTime()
             var uid = auth?.currentUser?.uid
-            val input = edit!!.text.toString()
+            input = edit!!.text.toString()
 
             val emo = edit.text.toString()
             Log.d("input:" , emo) // input 확인용
             callEmotionDetect(emo)
-            if (uid != null) {
-                writeDiary(uid,input, currentTime)
-            }
+
 
             val intentSend = Intent(this, MainScreen::class.java)
             intentSend.putExtra("diaryText",input)
@@ -94,9 +94,9 @@ class SampleDiaryActivity : AppCompatActivity() {
         val date = Date()
         return dateFormat.format(date)
     }
-    private fun writeDiary(userId: String, content: String, Date:String){
+    private fun writeDiary(userId: String, content: String, Date:String, emo:String){
         val isPublic = radioGroup.checkedRadioButtonId == R.id.publicRadio
-        val diary = Diary(content, Date, isPublic)
+        val diary = Diary(content, Date, isPublic, emo)
 
         //setValue : 내용 초기화됨 (고쳐야 할듯)
         myRef.child("user").child(userId).push().setValue(diary)
@@ -112,6 +112,7 @@ class SampleDiaryActivity : AppCompatActivity() {
 
             }
         })
+
 
     }
 
@@ -138,13 +139,16 @@ class SampleDiaryActivity : AppCompatActivity() {
             val result = gson.toJson(emotion) // Emotion 객체를 JSON 문자열로 변환
 
             val emotionObj = gson.fromJson(result, Emotion::class.java)
-            val param = emotionObj.param
+            param = emotionObj.param
+
 
             Log.d("test", "결과는 $param")
             val userId = auth?.currentUser?.uid
             if (userId != null) {
                 Log.d("test", "들어오긴함")
                 changeEmotionValue(userId, param)
+                writeDiary(userId,input, currentTime,param)
+
             }
 
 
