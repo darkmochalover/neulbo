@@ -93,9 +93,9 @@ class Message : Fragment() {
                             }
                         }
 
-//                        Log.d("Tag", "Key: $keys")
+                        Log.d("Tag", "Key: $keys")
                         keys.removeLast()
-//                        Log.d("Tag", "Value: $values")
+                        Log.d("Tag", "Value: $values")
                         values.removeLast()
 //                        Log.d("Tag", "Value: $values")
 

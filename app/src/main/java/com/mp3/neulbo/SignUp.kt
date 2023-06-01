@@ -40,6 +40,13 @@ class SignUp : AppCompatActivity() {
                         if (it.isSuccessful){
                             var uid = auth?.currentUser?.uid.toString()
                             myRef.child("user").child(uid).child("point").setValue(0)
+                            myRef.child("user").child(uid).child("emotion").child("공포").setValue(0)
+                            myRef.child("user").child(uid).child("emotion").child("놀람").setValue(0)
+                            myRef.child("user").child(uid).child("emotion").child("분노").setValue(0)
+                            myRef.child("user").child(uid).child("emotion").child("슬픔").setValue(0)
+                            myRef.child("user").child(uid).child("emotion").child("중립").setValue(0)
+                            myRef.child("user").child(uid).child("emotion").child("행복").setValue(0)
+                            myRef.child("user").child(uid).child("emotion").child("혐오").setValue(0)
                             val intent= Intent(this, SignIn::class.java)
                             startActivity(intent)
                         }
