@@ -8,7 +8,6 @@ import com.mp3.neulbo.R
 
 import android.content.Intent
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -35,7 +34,7 @@ class SampleDiaryActivity : AppCompatActivity() {
     private lateinit var save:ImageButton
     private lateinit var edit:EditText
     private lateinit var radioGroup: RadioGroup
-    private lateinit var modelRun:Button
+
 
     lateinit var mRetrofit : Retrofit // 사용할 레트로핏 객체
     lateinit var mRetrofitAPI: RetrofitAPI // 레트로핏 api 객체
@@ -66,12 +65,7 @@ class SampleDiaryActivity : AppCompatActivity() {
             finish()
         }
 
-        modelRun = findViewById(R.id.emotionLoad)
-        modelRun.setOnClickListener{
-            val input = edit.text.toString()
-            Log.d("input:" , input) // input 확인용
-            callEmotionDetect(input)
-        }
+
 
         //저장버튼
         save!!.setOnClickListener{
@@ -79,6 +73,10 @@ class SampleDiaryActivity : AppCompatActivity() {
             val currentTime = getCurrentDateTime()
             var uid = auth?.currentUser?.uid
             val input = edit!!.text.toString()
+
+            val emo = edit.text.toString()
+            Log.d("input:" , emo) // input 확인용
+            callEmotionDetect(emo)
             if (uid != null) {
                 writeDiary(uid,input, currentTime)
             }
@@ -143,6 +141,8 @@ class SampleDiaryActivity : AppCompatActivity() {
             val param = emotionObj.param
 
             Log.d("test", "결과는 $param")
+            var uid = auth?.currentUser?.uid
+            changeEmotionValue(uid.toString(),param)
 
 
             // param이 결과 감정.
@@ -156,9 +156,25 @@ class SampleDiaryActivity : AppCompatActivity() {
         }
     })
 
+
     private fun callEmotionDetect(InputText: String){
 //        print("input is: $InputText")
         mCallAIReply = mRetrofitAPI.getAIReply(InputText) // RetrofitAPI 에서 JSON 객체를 요청해서 반환하는 메소드 호출
         mCallAIReply.enqueue(mRetrofitCallback) // 응답을 큐에 넣어 대기 시켜놓음. 즉, 응답이 생기면 뱉어낸다.
+
+    }
+    fun changeEmotionValue(userId: String,Emotion:String) {
+        val pointRef = myRef.child("user").child(userId).child(Emotion)
+        pointRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val currentValue = dataSnapshot.getValue(Int::class.java)
+                val updatedValue = currentValue?.plus(1)
+                myRef.child("user").child(userId).child(Emotion).setValue(updatedValue)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
     }
 }

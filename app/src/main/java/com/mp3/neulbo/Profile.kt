@@ -12,6 +12,13 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.ColorTemplate.COLORFUL_COLORS
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import com.mp3.neulbo.databinding.ActivitySignInBinding
 
 class Profile : AppCompatActivity() {
@@ -19,10 +26,16 @@ class Profile : AppCompatActivity() {
     private lateinit var char: com.github.mikephil.charting.charts.PieChart
     private lateinit var goback: ImageButton
     private lateinit var profile_pic:ImageView
+    var auth : FirebaseAuth? = null
+
+    var myRef = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
+        auth = Firebase.auth
+        val uid = auth?.currentUser?.uid
 
         char=findViewById(R.id.chart)
         goback=findViewById(R.id.goBack)
@@ -36,18 +49,68 @@ class Profile : AppCompatActivity() {
         }
 
         char.setUsePercentValues(true)
+        var ang=0
+        var fear=0
+        var sad=0
+        var ntr=0
+        var hpy=0
+        var hte=0
+        var spr=0
 
 
 
-// data Set
+        getEmotionValue(uid.toString(),"분노"){ currentValue ->
+
+            if (currentValue != null) {
+                ang=currentValue.toInt()
+            }
+        }
+        getEmotionValue(uid.toString(),"공포"){ currentValue ->
+
+            if (currentValue != null) {
+                fear=currentValue.toInt()
+            }
+        }
+        getEmotionValue(uid.toString(),"슬픔"){ currentValue ->
+
+            if (currentValue != null) {
+                sad=currentValue.toInt()
+            }
+        }
+        getEmotionValue(uid.toString(),"중립"){ currentValue ->
+
+            if (currentValue != null) {
+                ntr=currentValue.toInt()
+            }
+        }
+        getEmotionValue(uid.toString(),"행복"){ currentValue ->
+
+            if (currentValue != null) {
+                hpy=currentValue.toInt()
+            }
+        }
+        getEmotionValue(uid.toString(),"혐오"){ currentValue ->
+
+            if (currentValue != null) {
+                hte=currentValue.toInt()
+            }
+        }
+        getEmotionValue(uid.toString(),"놀람"){ currentValue ->
+
+            if (currentValue != null) {
+                spr=currentValue.toInt()
+            }
+        }
+
+        // data Set
         val entries = ArrayList<PieEntry>()
-        entries.add(PieEntry(508f, "공포"))
-        entries.add(PieEntry(600f, "분노"))
-        entries.add(PieEntry(750f, "슬픔"))
-        entries.add(PieEntry(508f, "중립"))
-        entries.add(PieEntry(623f, "행복"))
-        entries.add(PieEntry(111f, "혐오"))
-        entries.add(PieEntry(243f, "놀람"))
+        entries.add(PieEntry(fear.toFloat(), "공포"))
+        entries.add(PieEntry(ang.toFloat(), "분노"))
+        entries.add(PieEntry(sad.toFloat(), "슬픔"))
+        entries.add(PieEntry(ntr.toFloat(), "중립"))
+        entries.add(PieEntry(hpy.toFloat(), "행복"))
+        entries.add(PieEntry(hte.toFloat(), "혐오"))
+        entries.add(PieEntry(spr.toFloat(), "놀람"))
 
         var maxValue = Float.MIN_VALUE
         var maxLabel=""
@@ -91,6 +154,18 @@ class Profile : AppCompatActivity() {
             animate()
         }
     }
+    fun getEmotionValue(userId: String,Emotion:String ,callback: (Int?) -> Unit) {
+        val pointRef = myRef.child("user").child(userId).child(Emotion)
+        pointRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val currentValue = dataSnapshot.getValue(Int::class.java)?.toInt()
+                callback(currentValue)
+            }
 
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
+    }
 
 }
