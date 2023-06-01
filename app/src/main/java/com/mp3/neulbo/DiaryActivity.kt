@@ -63,7 +63,7 @@ class DiaryActivity : AppCompatActivity() {
 
     //현재 날짜와 시간 가져오는 함수
     fun getCurrentDateTime(): String {
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val date = Date()
         return dateFormat.format(date)
     }
