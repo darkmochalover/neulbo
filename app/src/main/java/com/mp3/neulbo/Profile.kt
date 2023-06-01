@@ -70,13 +70,27 @@ class Profile : AppCompatActivity() {
                 // All callbacks have completed, execute the code here
                 // data Set
                 val entries = ArrayList<PieEntry>()
-                entries.add(PieEntry(fear.toFloat(), "공포"))
-                entries.add(PieEntry(ang.toFloat(), "분노"))
-                entries.add(PieEntry(sad.toFloat(), "슬픔"))
-                entries.add(PieEntry(ntr.toFloat(), "중립"))
-                entries.add(PieEntry(hpy.toFloat(), "행복"))
-                entries.add(PieEntry(hte.toFloat(), "혐오"))
-                entries.add(PieEntry(spr.toFloat(), "놀람"))
+                if(fear!=0) {
+                    entries.add(PieEntry(fear.toFloat(), "공포"))
+                }
+                if(ang!=0) {
+                    entries.add(PieEntry(ang.toFloat(), "분노"))
+                }
+                if(sad!=0) {
+                    entries.add(PieEntry(sad.toFloat(), "슬픔"))
+                }
+                if(ntr!=0) {
+                    entries.add(PieEntry(ntr.toFloat(), "중립"))
+                }
+                if(hpy!=0) {
+                    entries.add(PieEntry(hpy.toFloat(), "행복"))
+                }
+                if(hte!=0) {
+                    entries.add(PieEntry(hte.toFloat(), "혐오"))
+                }
+                if(spr!=0) {
+                    entries.add(PieEntry(spr.toFloat(), "놀람"))
+                }
                 char.setUsePercentValues(true)
 
 

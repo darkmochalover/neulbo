@@ -141,8 +141,12 @@ class SampleDiaryActivity : AppCompatActivity() {
             val param = emotionObj.param
 
             Log.d("test", "결과는 $param")
-            var uid = auth?.currentUser?.uid
-            changeEmotionValue(uid.toString(),param)
+            val userId = auth?.currentUser?.uid
+            if (userId != null) {
+                Log.d("test", "들어오긴함")
+                changeEmotionValue(userId, param)
+            }
+
 
 
             // param이 결과 감정.
@@ -159,17 +163,19 @@ class SampleDiaryActivity : AppCompatActivity() {
 
     private fun callEmotionDetect(InputText: String){
 //        print("input is: $InputText")
+
         mCallAIReply = mRetrofitAPI.getAIReply(InputText) // RetrofitAPI 에서 JSON 객체를 요청해서 반환하는 메소드 호출
         mCallAIReply.enqueue(mRetrofitCallback) // 응답을 큐에 넣어 대기 시켜놓음. 즉, 응답이 생기면 뱉어낸다.
 
     }
+
     fun changeEmotionValue(userId: String,Emotion:String) {
-        val pointRef = myRef.child("user").child(userId).child(Emotion)
+        val pointRef = myRef.child("user").child(userId).child("emotion").child(Emotion)
         pointRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val currentValue = dataSnapshot.getValue(Int::class.java)
                 val updatedValue = currentValue?.plus(1)
-                myRef.child("user").child(userId).child(Emotion).setValue(updatedValue)
+                myRef.child("user").child(userId).child("emotion").child(Emotion).setValue(updatedValue)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
