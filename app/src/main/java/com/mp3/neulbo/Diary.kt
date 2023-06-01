@@ -3,10 +3,12 @@ package com.mp3.neulbo
 class Diary {
     var content: String?= null
     var Date: String?= null
+    var isPublic: Boolean?= null
 
-    constructor(content: String?, Date: String?) {
+    constructor(content: String?, Date: String?, isPublic: Boolean?) {
         this.content = content
         this.Date = Date
+        this.isPublic = isPublic
     }
     fun getContent(content: String): String{
         return content

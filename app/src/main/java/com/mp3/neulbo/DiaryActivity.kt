@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.RadioGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -21,6 +22,8 @@ class DiaryActivity : AppCompatActivity() {
     private lateinit var goback: ImageButton
     private lateinit var save:ImageButton
     private lateinit var edit:EditText
+    private lateinit var radioGroup: RadioGroup
+
     var auth : FirebaseAuth? = null
 
     var myRef = FirebaseDatabase.getInstance().reference
@@ -29,14 +32,12 @@ class DiaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diary)
 
-
         goback=findViewById(R.id.goBack)
         save=findViewById(R.id.save)
         edit=findViewById(R.id.diaryEditText)
+        radioGroup = findViewById(R.id.radioGroup)
 
         auth = Firebase.auth
-        //val myUserId = uid
-        //val user = Firebase.auth.currentUser
 
         //뒤로가기 버튼
         goback.setOnClickListener {
@@ -68,10 +69,12 @@ class DiaryActivity : AppCompatActivity() {
         return dateFormat.format(date)
     }
     private fun writeDiary(userId: String, content: String, Date:String){
-        val diary = Diary(content, Date)
 
-        //setValue : 내용 초기화됨 (고쳐야 할듯)
+        val isPublic = radioGroup.checkedRadioButtonId == R.id.publicRadio
+        val diary = Diary(content, Date, isPublic)
+
         myRef.child("user").child(userId).push().setValue(diary)
+        //myRef.child("user").child(userId).push().setValue(isPublic)
         myRef.child("user").child(userId).child("point").addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

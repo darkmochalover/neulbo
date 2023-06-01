@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.RadioGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -33,6 +34,7 @@ class SampleDiaryActivity : AppCompatActivity() {
     private lateinit var goback: ImageButton
     private lateinit var save:ImageButton
     private lateinit var edit:EditText
+    private lateinit var radioGroup: RadioGroup
     private lateinit var modelRun:Button
 
     lateinit var mRetrofit : Retrofit // 사용할 레트로핏 객체
@@ -51,6 +53,7 @@ class SampleDiaryActivity : AppCompatActivity() {
         goback=findViewById(R.id.goBack)
         save=findViewById(R.id.save)
         edit=findViewById(R.id.diaryEditText)
+        radioGroup = findViewById(R.id.radioGroup)
 
         auth = Firebase.auth
         //val myUserId = uid
@@ -89,12 +92,13 @@ class SampleDiaryActivity : AppCompatActivity() {
 
     //현재 날짜와 시간 가져오는 함수
     fun getCurrentDateTime(): String {
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val date = Date()
         return dateFormat.format(date)
     }
     private fun writeDiary(userId: String, content: String, Date:String){
-        val diary = Diary(content, Date)
+        val isPublic = radioGroup.checkedRadioButtonId == R.id.publicRadio
+        val diary = Diary(content, Date, isPublic)
 
         //setValue : 내용 초기화됨 (고쳐야 할듯)
         myRef.child("user").child(userId).push().setValue(diary)
