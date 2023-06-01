@@ -36,6 +36,7 @@ class EmotionActivity : AppCompatActivity() {
             val input = binding.editTextDiary.text.toString()
             Log.d("input:" , input) // input 확인용
             callEmotionDetect(input)
+
         }
     }
 

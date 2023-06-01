@@ -5,6 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 import com.mp3.neulbo.shop.*
 
@@ -20,7 +28,11 @@ class ShopActivity : AppCompatActivity() {
     private lateinit var button_background: ImageButton
     private lateinit var button_stationery: ImageButton
     private lateinit var button_wallpaper: ImageButton
+    var auth : FirebaseAuth? = null
 
+    var myRef = FirebaseDatabase.getInstance().reference
+
+    private lateinit var points: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +50,14 @@ class ShopActivity : AppCompatActivity() {
         button_background = findViewById(R.id.backgroundsImage)
         button_stationery = findViewById(R.id.stationeryImage)
         button_wallpaper = findViewById(R.id.wallpaperImage)
+        auth = Firebase.auth
+        val uid = auth?.currentUser?.uid
+        points=findViewById(R.id.pointText)
 
+        getPointValue(uid.toString()) { currentValue ->
+
+            points.setText(currentValue+"points")
+        }
 
         button_book.setOnClickListener {
             val intentSend = Intent(this, BookActivity::class.java)
@@ -100,5 +119,18 @@ class ShopActivity : AppCompatActivity() {
         }
 
 
+    }
+    fun getPointValue(userId: String, callback: (String?) -> Unit) {
+        val pointRef = myRef.child("user").child(userId).child("point")
+        pointRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val currentValue = dataSnapshot.getValue(Int::class.java)?.toString()
+                callback(currentValue)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
     }
 }
