@@ -3,6 +3,7 @@ package com.mp3.neulbo
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -47,115 +48,134 @@ class Profile : AppCompatActivity() {
             startActivity(intentSend)
             finish()
         }
-
-        char.setUsePercentValues(true)
-        var ang=0
-        var fear=0
-        var sad=0
-        var ntr=0
-        var hpy=0
-        var hte=0
-        var spr=0
+        var ang = 0
+        var fear = 0
+        var sad = 0
+        var ntr = 0
+        var hpy = 0
+        var hte = 0
+        var spr = 0
 
 
+        // Counter to keep track of the number of completed callbacks
+        var callbackCount = 0
 
-        getEmotionValue(uid.toString(),"분노"){ currentValue ->
+        // Define a function to handle the completion of all callbacks
+        fun handleCallbackCompletion() {
+            // Increment the callback count
+            callbackCount++
 
+            // Check if all callbacks have completed
+            if (callbackCount == 7) {
+                // All callbacks have completed, execute the code here
+                // data Set
+                val entries = ArrayList<PieEntry>()
+                entries.add(PieEntry(fear.toFloat(), "공포"))
+                entries.add(PieEntry(ang.toFloat(), "분노"))
+                entries.add(PieEntry(sad.toFloat(), "슬픔"))
+                entries.add(PieEntry(ntr.toFloat(), "중립"))
+                entries.add(PieEntry(hpy.toFloat(), "행복"))
+                entries.add(PieEntry(hte.toFloat(), "혐오"))
+                entries.add(PieEntry(spr.toFloat(), "놀람"))
+                char.setUsePercentValues(true)
+
+
+                var maxValue = Float.MIN_VALUE
+                var maxLabel=""
+                for (entry in entries) {
+                    if (entry.value > maxValue) {
+                        maxValue = entry.value
+                        maxLabel = entry.label
+                    }
+                }
+                when(maxLabel){
+                    in "공포"->profile_pic.setImageResource(R.drawable.profile_fear_edit)
+                    in "분노"->profile_pic.setImageResource(R.drawable.profile_angry_edit)
+                    in "슬픔"->profile_pic.setImageResource(R.drawable.profile_sad_edit)
+                    in "중립"->profile_pic.setImageResource(R.drawable.profile_basic_edit)
+                    in "행복"->profile_pic.setImageResource(R.drawable.profile_happy_edit)
+                    in "혐오"->profile_pic.setImageResource(R.drawable.profile_hate_edit)
+                    in "놀람"->profile_pic.setImageResource(R.drawable.profile_surprised_edit)
+                }
+                // add a lot of colors
+                val colorsItems = ArrayList<Int>()
+                for (c in ColorTemplate.VORDIPLOM_COLORS) colorsItems.add(c)
+                for (c in ColorTemplate.JOYFUL_COLORS) colorsItems.add(c)
+                for (c in COLORFUL_COLORS) colorsItems.add(c)
+                for (c in ColorTemplate.LIBERTY_COLORS) colorsItems.add(c)
+                for (c in ColorTemplate.PASTEL_COLORS) colorsItems.add(c)
+                colorsItems.add(ColorTemplate.getHoloBlue())
+
+                val pieDataSet = PieDataSet(entries, "")
+                pieDataSet.apply {
+                    colors = colorsItems
+                    valueTextColor = Color.BLACK
+                    valueTextSize = 16f
+                }
+                val pieData = PieData(pieDataSet)
+                char.apply {
+                    data = pieData
+                    description.isEnabled = false
+                    isRotationEnabled = false
+                    setEntryLabelColor(Color.BLACK)
+                    animateY(1400, Easing.EaseInOutQuad)
+                    animate()
+                }
+            }
+        }
+
+        getEmotionValue(uid.toString(), "분노") { currentValue ->
             if (currentValue != null) {
-                ang=currentValue.toInt()
+                ang = currentValue.toInt()
             }
+            handleCallbackCompletion()
         }
-        getEmotionValue(uid.toString(),"공포"){ currentValue ->
 
+        getEmotionValue(uid.toString(), "공포") { currentValue ->
             if (currentValue != null) {
-                fear=currentValue.toInt()
+                fear = currentValue.toInt()
             }
+            handleCallbackCompletion()
         }
-        getEmotionValue(uid.toString(),"슬픔"){ currentValue ->
 
+        getEmotionValue(uid.toString(), "슬픔") { currentValue ->
             if (currentValue != null) {
-                sad=currentValue.toInt()
+                sad = currentValue.toInt()
             }
+            handleCallbackCompletion()
         }
-        getEmotionValue(uid.toString(),"중립"){ currentValue ->
 
+        getEmotionValue(uid.toString(), "중립") { currentValue ->
             if (currentValue != null) {
-                ntr=currentValue.toInt()
+                ntr = currentValue.toInt()
             }
+            handleCallbackCompletion()
         }
-        getEmotionValue(uid.toString(),"행복"){ currentValue ->
 
+        getEmotionValue(uid.toString(), "행복") { currentValue ->
             if (currentValue != null) {
-                hpy=currentValue.toInt()
+                hpy = currentValue.toInt()
             }
+            handleCallbackCompletion()
         }
-        getEmotionValue(uid.toString(),"혐오"){ currentValue ->
 
+        getEmotionValue(uid.toString(), "혐오") { currentValue ->
             if (currentValue != null) {
-                hte=currentValue.toInt()
+                hte = currentValue.toInt()
             }
+            handleCallbackCompletion()
         }
-        getEmotionValue(uid.toString(),"놀람"){ currentValue ->
 
+        getEmotionValue(uid.toString(), "놀람") { currentValue ->
             if (currentValue != null) {
-                spr=currentValue.toInt()
+                spr = currentValue.toInt()
             }
+            handleCallbackCompletion()
         }
 
-        // data Set
-        val entries = ArrayList<PieEntry>()
-        entries.add(PieEntry(fear.toFloat(), "공포"))
-        entries.add(PieEntry(ang.toFloat(), "분노"))
-        entries.add(PieEntry(sad.toFloat(), "슬픔"))
-        entries.add(PieEntry(ntr.toFloat(), "중립"))
-        entries.add(PieEntry(hpy.toFloat(), "행복"))
-        entries.add(PieEntry(hte.toFloat(), "혐오"))
-        entries.add(PieEntry(spr.toFloat(), "놀람"))
-
-        var maxValue = Float.MIN_VALUE
-        var maxLabel=""
-        for (entry in entries) {
-            if (entry.value > maxValue) {
-                maxValue = entry.value
-                maxLabel = entry.label
-            }
-        }
-        when(maxLabel){
-            in "공포"->profile_pic.setImageResource(R.drawable.profile_fear_edit)
-            in "분노"->profile_pic.setImageResource(R.drawable.profile_angry_edit)
-            in "슬픔"->profile_pic.setImageResource(R.drawable.profile_sad_edit)
-            in "중립"->profile_pic.setImageResource(R.drawable.profile_basic_edit)
-            in "행복"->profile_pic.setImageResource(R.drawable.profile_happy_edit)
-            in "혐오"->profile_pic.setImageResource(R.drawable.profile_hate_edit)
-            in "놀람"->profile_pic.setImageResource(R.drawable.profile_surprised_edit)
-        }
-        // add a lot of colors
-        val colorsItems = ArrayList<Int>()
-        for (c in ColorTemplate.VORDIPLOM_COLORS) colorsItems.add(c)
-        for (c in ColorTemplate.JOYFUL_COLORS) colorsItems.add(c)
-        for (c in COLORFUL_COLORS) colorsItems.add(c)
-        for (c in ColorTemplate.LIBERTY_COLORS) colorsItems.add(c)
-        for (c in ColorTemplate.PASTEL_COLORS) colorsItems.add(c)
-        colorsItems.add(ColorTemplate.getHoloBlue())
-
-        val pieDataSet = PieDataSet(entries, "")
-        pieDataSet.apply {
-            colors = colorsItems
-            valueTextColor = Color.BLACK
-            valueTextSize = 16f
-        }
-        val pieData = PieData(pieDataSet)
-        char.apply {
-            data = pieData
-            description.isEnabled = false
-            isRotationEnabled = false
-            setEntryLabelColor(Color.BLACK)
-            animateY(1400, Easing.EaseInOutQuad)
-            animate()
-        }
     }
     fun getEmotionValue(userId: String,Emotion:String ,callback: (Int?) -> Unit) {
-        val pointRef = myRef.child("user").child(userId).child(Emotion)
+        val pointRef = myRef.child("user").child(userId).child("emotion").child(Emotion)
         pointRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val currentValue = dataSnapshot.getValue(Int::class.java)?.toInt()
