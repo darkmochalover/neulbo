@@ -1,5 +1,6 @@
 ## neulbo: 
 # 🦥 늘 보는 앱, 늘보
+# Logo
 <img width="408" alt="image" src="https://github.com/darkmochalover/neulbo/assets/103321454/4d97b878-c5da-4120-9f84-bdc1915574ce">
 
   2023 1학기 모바일프로그래밍 Term Project입니다!
